@@ -183,7 +183,7 @@ class NetezzaODBC(PyODBCConnector, PGDialect):
     def initialize(self, connection):
         super(NetezzaODBC, self).initialize(connection)
         # PyODBC connector tries to set these to true...
-        self.supports_unicode_statements = False
+        self.supports_unicode_statements = True
         self.supports_unicode_binds = False
         self.returns_unicode_strings = True
         self.convert_unicode = 'ignore'
