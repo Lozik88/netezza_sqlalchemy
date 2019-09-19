@@ -3,22 +3,22 @@ Netezza SQLAlchemy
 
 SQLAlchemy dialect for the Netezza database.
 
-This is far from complete, has a lot of bugs etc, but it might give you a start.
+This is a fork from deontologician project with small changes to make it compatible to python 3.
 
-Note: I don't have access to Netezza anymore so I can't maintain this, but feel free to fork!
+Thanks a lot to deontologician! Original github project [here](https://github.com/deontologician/netezza_sqlalchemy).
 
 Usage:
 
 ```python
-from netezza_sqlalchemy import BYTEINT, ST_GEOMETRY
-from sqlalchemy import create_engine, Table, Column, Integer
+import netezza_dialect
+from sqlalchemy import create_engine, Table, Column, INT
 
 engine = create_engine('netezza://<username>:<password>@<dsn>')
 existing_table = Table('existing_name', reflect=True)
 new_table = Table('new_table',
-    Column('column_a', Integer, nullable=False),
-    Column('column_b', ST_GEOMETRY(100)),
-    Column('column_c', BYTEINT),
+    Column('column_a', INT, nullable=False),
+    Column('column_b', netezza_dialect.ST_GEOMETRY(100)),
+    Column('column_c', netezza_dialect.BYTEINT),
     distribute_on='column_a'
 )
 
@@ -27,5 +27,15 @@ new_table = Table('new_table',
 new_table.create()
 
 engine.execute(existing_table.insert().from_select(...))
+```
 
+## Example how to write directly into netezza from pandas dataframe
+```python
+df.to_sql("YourDatabase", 
+          engine,  
+          if_exists='append',
+          index=False,
+          dtype=your_dtypes,
+          chunksize=1600,
+          method='multi')
 ```
