@@ -7,7 +7,12 @@ This is a fork from deontologician project with small changes to make it compati
 
 Thanks a lot to deontologician! Original github project [here](https://github.com/deontologician/netezza_sqlalchemy).
 
-Usage:
+tested with `Python 3.7`, `pandas 0.25.1` and `SQLAlchemy 1.3.7`.
+
+## Installation
+Add the `netezza_dialect.py` to your project folder.
+
+## Usage
 
 ```python
 import netezza_dialect
