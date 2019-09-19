@@ -9,8 +9,7 @@ Note: I don't have access to Netezza anymore so I can't maintain this, but feel 
 
 Usage:
 
-```
-#!python
+```python
 from netezza_sqlalchemy import BYTEINT, ST_GEOMETRY
 from sqlalchemy import create_engine, Table, Column, Integer
 
