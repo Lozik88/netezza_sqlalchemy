@@ -1,5 +1,5 @@
-Netezza SQLAlchemy
-==================
+SQLAlchemy Netezza  dialect
+===========================
 
 SQLAlchemy dialect for the Netezza database.
 
